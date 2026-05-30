@@ -13,16 +13,17 @@ import java.util.List;
 public class CarController {
     @Autowired
     CarService carService;
-    @GetMapping
-    public List<Car> getAllCares() {
-        return carService.getAllCars();
+    @GetMapping("/{id}")
+    public Car getCarById(@PathVariable Long id ) {
+        return carService.getCarById(id);
     }
     @PostMapping
     public Car addCar(@RequestBody Car car) {
         return carService.saveCar(car);
     }
     @DeleteMapping("/{id}")
-            public void deleteCar(@PathVariable Long id) {
+            public String deleteCar(@PathVariable Long id) {
         carService.deleteCar(id);
+        return "Car deleted successfully!";
         }
 }
