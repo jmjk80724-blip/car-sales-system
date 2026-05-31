@@ -3,6 +3,7 @@ package com.Product.caresale.Controller;
 
 import com.Product.caresale.model.Car;
 import com.Product.caresale.service.CarService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +19,7 @@ public class CarController {
         return carService.getCarById(id);
     }
     @PostMapping
-    public Car addCar(@RequestBody Car car) {
+    public Car addCar(@Valid @RequestBody Car car) {
         return carService.saveCar(car);
     }
     @DeleteMapping("/{id}")
